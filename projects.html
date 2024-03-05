@@ -21,28 +21,38 @@
 
 <body>
     <header>
-        <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 ">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                 <a href="index.html" class="flex items-center">
                     <img src="assets/img/logo_white.png" style="width: 50px;" alt="Logo" />
                 </a>
-                <div class="flex items-center lg:order-2"></div>
+                <div class="flex items-center lg:order-2">
+                    <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-white rounded-lg lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200">
+                       <span class="sr-only">Open main menu</span>
+                       <svg class="w-6 h-6" fill="gray-900" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                       </svg>
+                       <svg class="hidden w-6 h-6" fill="gray-900" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                       </svg>
+                    </button>
+                 </div>
                 <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <li>
-                            <a href="index.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Главная страница</a>
+                            <a href="index.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 ">Главная страница</a>
                         </li>
                         <li>
-                            <a href="about.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">О нас</a>
+                            <a href="about.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 ">О нас</a>
                         </li>
                         <li>
-                            <a href="projects.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Проекты</a>
+                            <a href="projects.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 ">Проекты</a>
                         </li>
                         <li>
-                            <a href="services.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Услуги</a>
+                            <a href="services.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 ">Услуги</a>
                         </li>
                         <li>
-                            <a href="contact.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Контакты</a>
+                            <a href="contact.html" class="block py-2 pr-4 pl-3 text-xl text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 ">Контакты</a>
                         </li>
                     </ul>
                 </div>
@@ -51,10 +61,10 @@
     </header>
     
     
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-white ">
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">PROJECTS OF OUR COMPANY</h1>
-            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">With a fusion of creativity and ecological responsibility, we reshape modern living for a greener, more inspiring world.</p>
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl ">Проекты нашей компании</h1>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 ">Сочетая креативность и экологическую ответственность, мы перестраиваем современную жизнь для более экологичного и вдохновляющего мира.</p>
         </div>
     </section>
 
@@ -77,12 +87,12 @@
         <div class="project-vertical-preview-image-wrapper">
             <a href="work/eco-loft.html" class="view-button-wrapper w-inline-block">
                 <div class="view-button hover:transform hover:scale-110  transition duration-300">
-                    <div class="view-button-text">View<br/></div>
+                    <div class="view-button-text" text-xl>Cмотреть<br/></div>
                 </div>
             </a>
             
             <div class="project-vertical-preview-content">
-                <h2 class="heading-style-large text-style-allcaps">Eco Loft</h2>
+                <h2 class="heading-style-large text-style-allcaps">Эко Лофт</h2>
             </div>
             <div class="image-gradient-bottom"></div>
             <img src="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/03/1_front_exterior-70.jpg" 
@@ -99,11 +109,11 @@
         </div>
         <div class="project-vertical-preview-card">
             <div class="margin-bottom margin-small">
-                <div>Discover tranquility reimagined. "The Escape" harmonizes modern design with nature, crafting a retreat that rejuvenates and inspires.</div>
+                <div>Откройте для себя спокойствие в новом понимании. В "The Escape" современный дизайн гармонично сочетается с природой, создавая место для отдыха, которое омолаживает и вдохновляет.</div>
             </div>
             <a href="work/eco-loft.html" class="button-icon w-inline-block">
                 <div class="button-icon-inner hover:scale-110 transition duration-300">
-                    <div class="button-icon-text">View Project</div>
+                    <div class="button-icon-text">Посмотреть проект</div>
                     <div class="button-icon-badge">
                         <div class="button-icon-badge-icon w-embed hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -133,11 +143,11 @@
         <div class="project-vertical-preview-image-wrapper">
             <a href="work/eco-loft.html" class="view-button-wrapper w-inline-block">
                 <div class="view-button hover:transform hover:scale-110  transition duration-300">
-                    <div class="view-button-text">View<br/></div>
+                    <div class="view-button-text">Cмотреть<br/></div>
                 </div>
             </a>
             <div class="project-vertical-preview-content">
-                <h2 class="heading-style-large text-style-allcaps">Eco Loft</h2>
+                <h2 class="heading-style-large text-style-allcaps">Эко Лофт</h2>
             </div>
             <div class="image-gradient-bottom"></div>
             <img src="https://assets-global.website-files.com/64da2725f0e5df9da7d612c8/64db1d696dec8ad339a7ddf7_project-02.webp" 
@@ -154,11 +164,11 @@
         </div>
         <div class="project-vertical-preview-card">
             <div class="margin-bottom margin-small">
-                <div>Discover tranquility reimagined. "The Escape" harmonizes modern design with nature, crafting a retreat that rejuvenates and inspires.</div>
+                <div>Откройте для себя спокойствие в новом понимании. В "The Escape" современный дизайн гармонично сочетается с природой, создавая место для отдыха, которое омолаживает и вдохновляет.</div>
             </div>
             <a href="work/eco-loft.html" class="button-icon w-inline-block">
                 <div class="button-icon-inner hover:scale-110 transition duration-300">
-                    <div class="button-icon-text">View Project</div>
+                    <div class="button-icon-text">Посмотреть проект</div>
                     <div class="button-icon-badge">
                         <div class="button-icon-badge-icon w-embed hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -183,29 +193,29 @@
     </div>
     
     
-    <footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+    <footer class="bg-white rounded-lg shadow  m-4">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <a href="index.html" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                     <img src="assets/img/logo_white.png" style="width: 50px;" alt="Flowbite Logo" />
                 </a>
-                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 ">
                     <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                        <a href="about.html" class="hover:underline me-4 md:me-6">О нас</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                        <a href="#" class="hover:underline me-4 md:me-6">Политика конфиденциальности</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                        <a href="#" class="hover:underline me-4 md:me-6">Лицензия</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:underline">Contact</a>
+                        <a href="contact.html" class="hover:underline">Контакты</a>
                     </li>
                 </ul>
             </div>
-            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" class="hover:underline">AKA™</a>. All Rights Reserved.</span>
+            <hr class="my-6 border-gray-200 sm:mx-auto  lg:my-8" />
+            <span class="block text-sm text-gray-500 sm:text-center ">© 2023 <a href="/" class="hover:underline">AKA™</a>. Все права защищены.</span>
         </div>
     </footer>
 
