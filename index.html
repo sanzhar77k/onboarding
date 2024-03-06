@@ -12,62 +12,19 @@ const appUrl = "https://alfredtheapp.com/hotels/";
 const appStoreUrl = "https://apps.apple.com/us/app/alfredstay/id6450202202";
 const googlePlayUrl = "https://play.google.com/store/apps/details?id=com.alfredtheapp.alfred";
 
-function redirectToAppOrStore() {
-  // Проверяем, есть ли у пользователя приложение на устройстве
-  var appInstalled = false;
+(function(){
+    var app = {
+        launchApp: function() {
+            window.location.replace("https://alfredtheapp.com/hotels/");
+            this.timer = setTimeout(this.openWebApp, 1000);
+        },
 
-  // Создаем временный iframe с схемой URL приложения
-  var iframe = document.createElement("iframe");
-  iframe.style.display = "none";
-  iframe.src = appUrl;
-
-  // Добавляем iframe на страницу
-  document.body.appendChild(iframe);
-
-  // Обработчик события загрузки страницы
-  iframe.onload = function() {
-    // По событию загрузки приложения устанавливаем флаг в true
-    appInstalled = true;
-
-    // Удаляем iframe
-    document.body.removeChild(iframe);
-
-    // Перенаправляем в приложение
-    if (appInstalled) {
-      window.location.href = appUrl;
-    } else {
-      redirectToStore();
-    }
-  };
-
-  // Устанавливаем таймаут для проверки загрузки приложения
-  setTimeout(function() {
-    // Если приложение не загрузилось, удаляем iframe
-    document.body.removeChild(iframe);
-
-    // Если приложение не установлено, перенаправляем в магазин приложений
-    if (!appInstalled) {
-      redirectToStore();
-    }
-  }, 0); // Время ожидания в миллисекундах
-}
-
-function redirectToStore() {
-  if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
-    // Redirect to App Store
-    window.location.href = appStoreUrl;
-  } else if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
-    // Redirect to Google Play
-    window.location.href = googlePlayUrl;
-  } else {
-    // Redirect to a default URL for other devices
-    window.location.href = "https://www.alfredtheapp.com/";
-  }
-}
-
-// Автоматическое перенаправление
-window.addEventListener('load', redirectToAppOrStore);
-
+        openWebApp:function(){
+            window.location.replace("https://apps.apple.com/us/app/alfredstay/id6450202202")
+        }
+    };
+    app.launchApp();
+})();
 </script>
 
 </body>
