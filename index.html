@@ -23,9 +23,14 @@ function getDevice() {
 async function saveLinkToClipboard(url) {
   if (navigator.clipboard) {
     try {
-      await navigator.clipboard.writeText([new ClipboardItem({ 'text/plain': url })]);
-    } catch (error) {
-      console.error('Ошибка при копировании ссылки:', error);
+      navigator.clipboard
+      .writeText(copyText.value)
+      .then(() => {
+        alert("successfully copied");
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
     }
   } else {
     fallbackCopyLinkToClipboard(url);
