@@ -8,23 +8,36 @@
 <body>
 
 <script>
-const appUrl = "https://alfredtheapp.com/hotels/";
-const appStoreUrl = "https://apps.apple.com/us/app/alfredstay/id6450202202";
-const googlePlayUrl = "https://play.google.com/store/apps/details?id=com.alfredtheapp.alfred";
 
-(function(){
-    var app = {
-        launchApp: function() {
-            window.location.replace("https://alfredtheapp.com/hotels/");
-            this.timer = setTimeout(this.openWebApp, 0);
-        },
+function copyLinkToClipboard(event) {
+  event.preventDefault();
 
-        openWebApp:function(){
-            window.location.replace("https://apps.apple.com/us/app/alfredstay/id6450202202")
-        }
-    };
-    app.launchApp();
-})();
+  // Получаем ссылку из атрибута href элемента, на который было совершено нажатие
+  const link = event.target.href;
+
+  // Создаем временный элемент textarea для копирования текста
+  const textArea = document.createElement('textarea');
+  textArea.value = link;
+
+  // Добавляем элемент на страницу
+  document.body.appendChild(textArea);
+
+  // Выделяем текст в элементе
+  textArea.select();
+
+  // Копируем выделенный текст в буфер обмена
+  document.execCommand('copy');
+
+  // Удаляем временный элемент
+  document.body.removeChild(textArea);
+}
+
+// Находим все ссылки на странице и добавляем обработчик события на нажатие
+const links = document.querySelectorAll('a');
+links.forEach(link => {
+  link.addEventListener('click', copyLinkToClipboard);
+});
+
 </script>
 
 </body>
