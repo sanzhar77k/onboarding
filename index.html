@@ -1,19 +1,26 @@
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сохранение URL</title>
+    <title>Перенаправление</title>
 </head>
 <body>
 
-<h1>Сохранение URL страницы</h1>
-
 <script>
-// Функция для сохранения URL в буфер обмена
-async function saveUrlToClipboard() {
-  const currentPageUrl = window.location.href;
+
+function getDevice() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (/android/i.test(userAgent)) {
+    return 'android';
+  } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+    return 'ios';
+  } else {
+    return 'desktop';
+  }
+}
+
+async function saveLinkToClipboard() {
   if (navigator.clipboard) {
     try {
       await navigator.clipboard.writeText(currentPageUrl);
@@ -28,8 +35,28 @@ async function saveUrlToClipboard() {
   }
 }
 
-// Вызов функции
-saveUrlToClipboard();
+function redirectToLink(link) {
+  window.location.href = link;
+}
+
+const currentPageUrl = window.location.href;
+
+saveLinkToClipboard(currentPageUrl);
+
+const device = getDevice();
+
+switch (device) {
+  case 'android':
+    redirectToLink('https://play.google.com/store/apps/details?id=com.alfredtheapp.alfred');
+    break;
+  case 'ios':
+    redirectToLink('https://apps.apple.com/us/app/alfredstay/id6450202202');
+    break;
+  case 'desktop':
+    redirectToLink('https://www.alfredtheapp.com/');
+    break;
+}
+
 </script>
 
 </body>
