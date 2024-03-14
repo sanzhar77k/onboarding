@@ -9,34 +9,29 @@
 
 <script>
 
-function copyLinkToClipboard(event) {
-  event.preventDefault();
-
-  // Получаем ссылку из атрибута href элемента, на который было совершено нажатие
-  const link = event.target.href;
+// Сохраняем ссылку в буфер обмена
+function saveLinkToClipboard() {
+  // Получаем текущий URL страницы
+  var currentPageUrl = window.location.href;
 
   // Создаем временный элемент textarea для копирования текста
-  const textArea = document.createElement('textarea');
-  textArea.value = link;
+  var tempTextArea = document.createElement('textarea');
+  tempTextArea.value = currentPageUrl;
+  document.body.appendChild(tempTextArea);
 
-  // Добавляем элемент на страницу
-  document.body.appendChild(textArea);
-
-  // Выделяем текст в элементе
-  textArea.select();
-
-  // Копируем выделенный текст в буфер обмена
+  // Выделяем текст в элементе textarea и копируем его в буфер обмена
+  tempTextArea.select();
   document.execCommand('copy');
 
-  // Удаляем временный элемент
-  document.body.removeChild(textArea);
+  // Удаляем временный элемент textarea
+  document.body.removeChild(tempTextArea);
+
+  // Выводим сообщение об успешном копировании
+  alert('Ссылка скопирована в буфер обмена: ' + currentPageUrl);
 }
 
-// Находим все ссылки на странице и добавляем обработчик события на нажатие
-const links = document.querySelectorAll('a');
-links.forEach(link => {
-  link.addEventListener('click', copyLinkToClipboard);
-});
+// Вызываем функцию сохранения ссылки в буфер обмена при загрузке страницы
+saveLinkToClipboard();
 
 </script>
 
