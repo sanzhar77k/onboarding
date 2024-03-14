@@ -3,39 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect Example</title>
+    <title>Перенаправление</title>
 </head>
 <body>
 
 <script>
 
-// Сохраняем ссылку в буфер обмена
-function saveLinkToClipboard() {
-  // Получаем текущий URL страницы
-  var currentPageUrl = window.location.href;
-
-  // Создаем временный элемент textarea для копирования текста
-  var tempTextArea = document.createElement('textarea');
-  tempTextArea.value = currentPageUrl;
-  document.body.appendChild(tempTextArea);
-
-  // Выделяем текст в элементе textarea и копируем его в буфер обмена
-  tempTextArea.select();
-  document.execCommand('copy');
-
-  // Удаляем временный элемент textarea
-  document.body.removeChild(tempTextArea);
-
-  // Выводим сообщение об успешном копировании
-  alert('Ссылка скопирована в буфер обмена: ' + currentPageUrl);
+// Функция для определения устройства
+function getDevice() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  if (/android/i.test(userAgent)) {
+    return 'android';
+  } else if (/iphone|ipad|ipod/i.test(userAgent)) {
+    return 'ios';
+  } else {
+    return 'desktop';
+  }
 }
 
-// Вызываем функцию сохранения ссылки в буфер обмена при загрузке страницы
-saveLinkToClipboard();
+// Функция для сохранения ссылки в буфер обмена
+async function saveLinkToClipboard(url) {
+  if (navigator.clipboard) {
+    try {
+      await navigator.clipboard.write([new ClipboardItem({ 'text/plain': url })]);
+    } catch (error) {
+      console.error('Ошибка при копировании ссылки:', error);
+    }
+  } else {
+    // Используйте альтернативный метод для устаревших браузеров
+    fallbackCopyLinkToClipboard(url);
+  }
+}
+
+// Функция для перенаправления на ссылку
+function redirectToLink(link) {
+  window.location.href = link;
+}
+
+// Получить URL текущей страницы
+const currentPageUrl = window.location.href;
+
+// Сохранить URL в буфер обмена
+saveLinkToClipboard(currentPageUrl);
+
+// Определить устройство пользователя
+const device = getDevice();
+
+// Перенаправить пользователя на соответствующую ссылку
+switch (device) {
+  case 'android':
+    redirectToLink('https://play.google.com/store/apps/details?id=com.alfredtheapp.alfred');
+    break;
+  case 'ios':
+    redirectToLink('https://apps.apple.com/us/app/alfredstay/id6450202202');
+    break;
+  case 'desktop':
+    redirectToLink('https://www.alfredtheapp.com/');
+    break;
+}
 
 </script>
 
-
-
 </body>
 </html>
+
