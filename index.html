@@ -11,12 +11,12 @@
 function copyLinkToClipboard(event) {
   event.preventDefault();
 
-  // Получаем ссылку из атрибута href элемента, на который было совершено нажатие
-  const link = event.target.href;
+  // Получаем URL страницы, с которой была совершена переадресация
+  const referringUrl = document.referrer;
 
   // Создаем временный элемент textarea для копирования текста
   const textArea = document.createElement('textarea');
-  textArea.value = link;
+  textArea.value = referringUrl;
 
   // Добавляем элемент на страницу
   document.body.appendChild(textArea);
@@ -37,6 +37,7 @@ links.forEach(link => {
   link.addEventListener('click', copyLinkToClipboard);
 });
 </script>
+
 
 
 </body>
