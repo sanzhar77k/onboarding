@@ -9,37 +9,34 @@
 
 <script>
 
-const inviteLink = 'https://apps.apple.com/us/app/alfredstay/id6450202202';
-// a legacy fallback for browsers that don't support navigator.clipboard
-// most likely not needed, but it's cheap!
-function fallbackCopyTextToClipboard(text) {
-  var textArea = document.createElement('textarea');
-  textArea.value = text;
-  // Avoid scrolling to bottom
-  textArea.style.top = '0';
-  textArea.style.left = '0';
-  textArea.style.position = 'fixed';
+function copyLinkToClipboard(event) {
+  event.preventDefault();
+
+  // Получаем ссылку из атрибута href элемента, на который было совершено нажатие
+  const link = event.target.href;
+
+  // Создаем временный элемент textarea для копирования текста
+  const textArea = document.createElement('textarea');
+  textArea.value = link;
+
+  // Добавляем элемент на страницу
   document.body.appendChild(textArea);
-  textArea.focus();
+
+  // Выделяем текст в элементе
   textArea.select();
-  try {
-    document.execCommand('copy');
-  } catch (err) {}
+
+  // Копируем выделенный текст в буфер обмена
+  document.execCommand('copy');
+
+  // Удаляем временный элемент
   document.body.removeChild(textArea);
 }
-async function copyTextToClipboard(text) {
-  if (!navigator.clipboard) {
-    fallbackCopyTextToClipboard(text);
-    return new Promise((r) => setTimeout(r, 250));
-  }
-  return navigator.clipboard.writeText(text);
-}
-function openAppStore(e) {
-  e.preventDefault();
-  copyTextToClipboard(inviteLink).then(() => {
-    window.location.href = e.target.href;
-  });
-}
+
+// Находим все ссылки на странице и добавляем обработчик события на нажатие
+const links = document.querySelectorAll('a');
+links.forEach(link => {
+  link.addEventListener('click', copyLinkToClipboard);
+});
 
 </script>
 
