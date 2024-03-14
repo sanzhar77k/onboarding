@@ -9,7 +9,6 @@
 
 <script>
 
-// Функция для определения устройства
 function getDevice() {
   const userAgent = navigator.userAgent.toLowerCase();
   if (/android/i.test(userAgent)) {
@@ -21,35 +20,28 @@ function getDevice() {
   }
 }
 
-// Функция для сохранения ссылки в буфер обмена
 async function saveLinkToClipboard(url) {
   if (navigator.clipboard) {
     try {
-      await navigator.clipboard.write([new ClipboardItem({ 'text/plain': url })]);
+      await navigator.clipboard.writeText([new ClipboardItem({ 'text/plain': url })]);
     } catch (error) {
       console.error('Ошибка при копировании ссылки:', error);
     }
   } else {
-    // Используйте альтернативный метод для устаревших браузеров
     fallbackCopyLinkToClipboard(url);
   }
 }
 
-// Функция для перенаправления на ссылку
 function redirectToLink(link) {
   window.location.href = link;
 }
 
-// Получить URL текущей страницы
 const currentPageUrl = window.location.href;
 
-// Сохранить URL в буфер обмена
 saveLinkToClipboard(currentPageUrl);
 
-// Определить устройство пользователя
 const device = getDevice();
 
-// Перенаправить пользователя на соответствующую ссылку
 switch (device) {
   case 'android':
     redirectToLink('https://play.google.com/store/apps/details?id=com.alfredtheapp.alfred');
