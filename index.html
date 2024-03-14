@@ -16,7 +16,7 @@ async function saveUrlToClipboard() {
   const currentPageUrl = window.location.href;
   if (navigator.clipboard) {
     try {
-      await navigator.clipboard.write([new ClipboardItem({ 'text/plain': currentPageUrl })]);
+      await navigator.clipboard.writeText([new ClipboardItem({ 'text/plain': currentPageUrl })]);
       alert('Ссылка успешно скопирована!');
     } catch (error) {
       console.error('Ошибка при копировании ссылки:', error);
