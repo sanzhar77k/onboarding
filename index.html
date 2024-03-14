@@ -9,36 +9,22 @@
 
 <script>
 
-const inviteLink = 'https://get.dbbl.app/XXXX';
-// a legacy fallback for browsers that don't support navigator.clipboard
-// most likely not needed, but it's cheap!
-function fallbackCopyTextToClipboard(text) {
-  var textArea = document.createElement('textarea');
-  textArea.value = text;
-  // Avoid scrolling to bottom
-  textArea.style.top = '0';
-  textArea.style.left = '0';
-  textArea.style.position = 'fixed';
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-  try {
-    document.execCommand('copy');
-  } catch (err) {}
-  document.body.removeChild(textArea);
+function redirectToStore() {
+    if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
+        // Redirect to App Store
+        window.location.href = 'https://apps.apple.com/us/app/alfredstay/id6450202202';
+    } else if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+        // Redirect to Google Play
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.alfredtheapp.alfred';
+    } else {
+        // Redirect to a default URL for other devices
+        window.location.href = 'https://www.alfredtheapp.com/';
+    }
 }
-async function copyTextToClipboard(text) {
-  if (!navigator.clipboard) {
-    fallbackCopyTextToClipboard(text);
-    return new Promise((r) => setTimeout(r, 250));
-  }
-  return navigator.clipboard.writeText(text);
-}
-function openAppStore(e) {
-  e.preventDefault();
-  copyTextToClipboard(inviteLink).then(() => {
-    window.location.href = e.target.href;
-  });
+
+// Автоматическое перенаправление
+window.onload = function() {
+    setTimeout(redirectToStore, 0); //
 }
 
 </script>
