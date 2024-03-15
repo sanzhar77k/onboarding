@@ -20,11 +20,6 @@ function getDevice() {
   }
 }
 
-function fallbackCopyLinkToClipboard(textArea) {        
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-    }
-
 async function saveLinkToClipboard() {
   if (navigator.clipboard) {
     try {
