@@ -8,16 +8,17 @@
 <body>
 
 <script>
-
-function getDevice() {
-  const userAgent = navigator.userAgent.toLowerCase();
-  if (/android/i.test(userAgent)) {
-    return 'android';
-  } else if (/iphone|ipad|ipod/i.test(userAgent)) {
-    return 'ios';
-  } else {
-    return 'desktop';
-  }
+function redirectToStore() {
+    if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
+        // Redirect to App Store
+        window.location.href = 'https://apps.apple.com/us/app/alfredstay/id6450202202';
+    } else if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+        // Redirect to Google Play
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.alfredtheapp.alfred';
+    } else {
+        // Redirect to a default URL for other devices
+        window.location.href = 'https://www.alfredtheapp.com/';
+    }
 }
 
 function saveLinkToClipboard(copyText) {
@@ -29,26 +30,13 @@ function saveLinkToClipboard(copyText) {
   navigator.clipboard.writeText(copyText.value);
 }
 
-function redirectToLink(link) {
-  window.location.href = link;
-}
-
 const currentPageUrl = window.location.href;
 
 saveLinkToClipboard(currentPageUrl);
 
-const device = getDevice();
-
-switch (device) {
-  case 'android':
-    redirectToLink('https://play.google.com/store/apps/details?id=com.alfredtheapp.alfred');
-    break;
-  case 'ios':
-    redirectToLink('https://apps.apple.com/us/app/alfredstay/id6450202202');
-    break;
-  case 'desktop':
-    redirectToLink('https://www.alfredtheapp.com/');
-    break;
+// Автоматическое перенаправление
+window.onload = function() {
+    setTimeout(redirectToStore, 1000); //
 }
 
 </script>
