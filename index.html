@@ -26,18 +26,13 @@ function fallbackCopyLinkToClipboard(textArea) {
     }
 
 async function saveLinkToClipboard() {
-  if (navigator.clipboard) {
-    try {
+  try {
       await window.navigator.clipboard.writeText(currentPageUrl);
       alert('Ссылка успешно скопирована!');
     } catch (error) {
       console.error('Ошибка при копировании ссылки:', error);
       alert('Не удалось скопировать ссылку!');
     }
-  } else {
-    // Используйте альтернативный метод для устаревших браузеров
-    fallbackCopyLinkToClipboard(currentPageUrl);
-  }
 }
 
 function redirectToLink(link) {
