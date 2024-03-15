@@ -20,21 +20,17 @@ function getDevice() {
   }
 }
 
-function fallbackCopyLinkToClipboard(clipBoardElem){
-  document.body.appendChild(clipBoardElem);
-  clipBoardElem.value = "text";
-  clipBoardElem.select();
-  var successfulCopy = document.execCommand('copy');
-}
-
-async function saveLinkToClipboard(myVariable) {
-  navigator.clipboard.writeText(myVariable)
-  .then(function() {
-    console.log("Текст успешно скопирован в буфер обмена.");
-  })
-  .catch(function(error) {
-    console.error("Не удалось скопировать текст в буфер обмена:", error);
-  });
+function saveLinkToClipboard(copyText) {
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard
+      .writeText(copyText.value)
+      .then(() => {
+        alert("successfully copied");
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
 }
 
 function redirectToLink(link) {
