@@ -3,42 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Перенаправление</title>
+    <title>Redirect Example</title>
 </head>
 <body>
 
 <script>
-
-function fallbackCopyLinkToClipboard(text) {
-  var textArea = document.createElement("textarea");
-  textArea.value = text;
-
-  // Стиль "display: none" прячет элемент от пользователя.
-  textArea.style.position = "fixed";
-  textArea.style.top = 0;
-  textArea.style.left = 0;
-
-  // Убедимся, что элемент не мешает видимости страницы и пользовательскому взаимодействию.
-  textArea.style.opacity = 0;
-
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-
-  try {
-    var successful = document.execCommand('copy');
-    var msg = successful ? 'successful' : 'unsuccessful';
-    console.log('Fallback: Copying text command was ' + msg);
-    alert('Ссылка успешно скопирована!');
-  } catch (err) {
-    console.error('Fallback: Oops, unable to copy', err);
-    alert('Не удалось скопировать ссылку!');
-  }
-
-  document.body.removeChild(textArea);
-}
-
-
 function getDevice() {
   const userAgent = navigator.userAgent.toLowerCase();
   if (/android/i.test(userAgent)) {
@@ -71,7 +40,7 @@ function redirectToLink(link) {
 
 const currentPageUrl = window.location.href;
 
-saveLinkToClipboard();
+saveLinkToClipboard(currentPageUrl);
 
 const device = getDevice();
 
