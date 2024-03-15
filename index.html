@@ -20,10 +20,12 @@ function getDevice() {
   }
 }
 
-async function saveLinkToClipboard() {
+async function saveLinkToClipboard(copyText) {
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
   if (navigator.clipboard) {
     try {
-      await navigator.clipboard.writeText(currentPageUrl);
+      await navigator.clipboard.writeText(copyText.value);
       alert('Ссылка успешно скопирована!');
     } catch (error) {
       console.error('Ошибка при копировании ссылки:', error);
