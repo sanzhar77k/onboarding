@@ -19,6 +19,11 @@ function getDevice() {
     return 'desktop';
   }
 }
+function fallbackCopyLinkToClipboard(copyText) {
+    copyText.select();
+    document.execCommand("copy");
+    alert("Text copied to clipboard!");
+}
 
 async function saveLinkToClipboard(copyText) {
   copyText.select();
