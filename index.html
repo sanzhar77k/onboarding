@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect</title>
+    <title>Перенаправление</title>
 </head>
 <body>
 
 <script>
-
 function redirectToStore() {
     if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
         // Redirect to App Store
@@ -22,22 +21,20 @@ function redirectToStore() {
     }
 }
 
-function saveLinkToClipboard() {
-    navigator.clipboard
-      .writeText(currentPageUrl)
-      .then(() => {
-        alert("successfully copied");
-      })
-      .catch(() => {
-        alert("something went wrong");
-      });
+async function saveLinkToClipboard(myVariable) {
+  window.navigator.clipboard.writeText(myVariable)
+  .then(function() {
+    console.log("Текст успешно скопирован в буфер обмена.");
+  })
+  .catch(function(error) {
+    console.error("Не удалось скопировать текст в буфер обмена:", error);
+  });
 }
 
 const currentPageUrl = window.location.href;
 
-redirectToStore()
 saveLinkToClipboard(currentPageUrl);
-
+redirectToStore()
 
 </script>
 
