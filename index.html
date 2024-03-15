@@ -8,6 +8,7 @@
 <body>
 
 <script>
+
 function getDevice() {
   const userAgent = navigator.userAgent.toLowerCase();
   if (/android/i.test(userAgent)) {
@@ -19,7 +20,7 @@ function getDevice() {
   }
 }
 
-async function saveLinkToClipboard(copyText) {
+function saveLinkToClipboard(copyText) {
   // Select the text field
   copyText.select();
   copyText.setSelectionRange(0, 99999); // For mobile devices
@@ -29,7 +30,7 @@ async function saveLinkToClipboard(copyText) {
 
   // Alert the copied text
   alert("Copied the text: " + copyText.value);
-
+}
 
 function redirectToLink(link) {
   window.location.href = link;
@@ -57,4 +58,3 @@ switch (device) {
 
 </body>
 </html>
-
