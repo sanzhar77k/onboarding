@@ -19,10 +19,14 @@ function getDevice() {
     return 'desktop';
   }
 }
-function fallbackCopyLinkToClipboard(copyText) {
-    copyText.select();
-    document.execCommand("copy");
-    alert("Text copied to clipboard!");
+function fallbackCopyLinkToClipboard(text) {
+  var tempInput = document.createElement("textarea");
+  tempInput.value = text;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+  alert("Text copied to clipboard!");
 }
 
 async function saveLinkToClipboard(copyText) {
