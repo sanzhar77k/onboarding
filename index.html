@@ -20,11 +20,25 @@ function getDevice() {
   }
 }
 
-async function saveLinkToClipboard(clipBoardElem) {
-  document.body.appendChild(clipBoardElem);
-  clipBoardElem.value = "text";
-  clipBoardElem.select();
-  var successfulCopy = document.execCommand('copy');
+function fallbackCopyLinkToClipboard(textArea) {        
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    }
+
+async function saveLinkToClipboard() {
+  if (navigator.clipboard) {
+    try {
+      await windownavigator.clipboard.writeText(currentPageUrl);
+      alert('Ссылка успешно скопирована!');
+    } catch (error) {
+      console.error('Ошибка при копировании ссылки:', error);
+      alert('Не удалось скопировать ссылку!');
+    }
+  } else {
+    // Используйте альтернативный метод для устаревших браузеров
+    fallbackCopyLinkToClipboard(currentPageUrl);
+  }
+}
 
 function redirectToLink(link) {
   window.location.href = link;
