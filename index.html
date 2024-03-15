@@ -20,7 +20,7 @@ function getDevice() {
   }
 }
 
-function saveLinkToClipboard(copyText) {
+async function saveLinkToClipboard(copyText) {
     copyText.select();
     copyText.setSelectionRange(0, 99999);
     navigator.clipboard
