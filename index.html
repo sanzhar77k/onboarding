@@ -20,19 +20,21 @@ function getDevice() {
   }
 }
 
-async function saveLinkToClipboard() {
-  if (navigator.clipboard) {
-    try {
-      await navigator.clipboard.writeText(currentPageUrl);
-      alert('Ссылка успешно скопирована!');
-    } catch (error) {
-      console.error('Ошибка при копировании ссылки:', error);
-      alert('Не удалось скопировать ссылку!');
-    }
-  } else {
-    // Используйте альтернативный метод для устаревших браузеров
-    fallbackCopyLinkToClipboard(currentPageUrl);
-  }
+function fallbackCopyLinkToClipboard(clipBoardElem){
+  document.body.appendChild(clipBoardElem);
+  clipBoardElem.value = "text";
+  clipBoardElem.select();
+  var successfulCopy = document.execCommand('copy');
+}
+
+async function saveLinkToClipboard(myVariable) {
+  navigator.clipboard.writeText(myVariable)
+  .then(function() {
+    console.log("Текст успешно скопирован в буфер обмена.");
+  })
+  .catch(function(error) {
+    console.error("Не удалось скопировать текст в буфер обмена:", error);
+  });
 }
 
 function redirectToLink(link) {
