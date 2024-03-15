@@ -22,9 +22,9 @@ function redirectToStore() {
     }
 }
 
-function saveLinkToClipboard(copyText) {
+function saveLinkToClipboard() {
     navigator.clipboard
-      .writeText(copyText.value)
+      .writeText(currentPageUrl)
       .then(() => {
         alert("successfully copied");
       })
