@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,36 @@
 <body>
 
 <script>
+
+function fallbackCopyLinkToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+
+  // Стиль "display: none" прячет элемент от пользователя.
+  textArea.style.position = "fixed";
+  textArea.style.top = 0;
+  textArea.style.left = 0;
+
+  // Убедимся, что элемент не мешает видимости страницы и пользовательскому взаимодействию.
+  textArea.style.opacity = 0;
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Fallback: Copying text command was ' + msg);
+    alert('Ссылка успешно скопирована!');
+  } catch (err) {
+    console.error('Fallback: Oops, unable to copy', err);
+    alert('Не удалось скопировать ссылку!');
+  }
+
+  document.body.removeChild(textArea);
+}
+
 
 function getDevice() {
   const userAgent = navigator.userAgent.toLowerCase();
@@ -20,10 +50,10 @@ function getDevice() {
   }
 }
 
-async function saveLinkToClipboard(copyText) {
+async function saveLinkToClipboard() {
   if (navigator.clipboard) {
     try {
-      await navigator.clipboard.writeText(copyText);
+      await navigator.clipboard.writeText(currentPageUrl);
       alert('Ссылка успешно скопирована!');
     } catch (error) {
       console.error('Ошибка при копировании ссылки:', error);
@@ -31,7 +61,7 @@ async function saveLinkToClipboard(copyText) {
     }
   } else {
     // Используйте альтернативный метод для устаревших браузеров
-    fallbackCopyLinkToClipboard(copyText);
+    fallbackCopyLinkToClipboard(currentPageUrl);
   }
 }
 
@@ -41,9 +71,7 @@ function redirectToLink(link) {
 
 const currentPageUrl = window.location.href;
 
-document.addEventListener("DOMContentLoaded", function() {
-    saveLinkToClipboard(currentPageUrl);
-});
+saveLinkToClipboard();
 
 const device = getDevice();
 
@@ -63,3 +91,4 @@ switch (device) {
 
 </body>
 </html>
+
