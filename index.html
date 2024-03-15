@@ -30,11 +30,9 @@ function fallbackCopyLinkToClipboard(text) {
 }
 
 async function saveLinkToClipboard(copyText) {
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
   if (navigator.clipboard) {
     try {
-      await navigator.clipboard.writeText(copyText.value);
+      await navigator.clipboard.writeText(copyText);
       alert('Ссылка успешно скопирована!');
     } catch (error) {
       console.error('Ошибка при копировании ссылки:', error);
@@ -42,7 +40,7 @@ async function saveLinkToClipboard(copyText) {
     }
   } else {
     // Используйте альтернативный метод для устаревших браузеров
-    fallbackCopyLinkToClipboard(copyText.value);
+    fallbackCopyLinkToClipboard(copyText);
   }
 }
 
@@ -53,10 +51,7 @@ function redirectToLink(link) {
 const currentPageUrl = window.location.href;
 
 document.addEventListener("DOMContentLoaded", function() {
-    const copyText = document.createElement("textarea");
-    copyText.value = currentPageUrl;
-    document.body.appendChild(copyText);
-    saveLinkToClipboard(copyText);
+    saveLinkToClipboard(currentPageUrl);
 });
 
 const device = getDevice();
